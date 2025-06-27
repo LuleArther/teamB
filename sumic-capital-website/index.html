@@ -1,0 +1,1289 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sumic Capital - Investment Banking Solutions</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        :root {
+            --primary-color: #023151;
+            --secondary-color: #034a73;
+            --accent-color: #1EEF10;
+            --success-color: #1EEF10;
+            --text-dark: #023151;
+            --text-light: #5a6d7a;
+            --bg-light: #f7fafc;
+            --bg-white: #ffffff;
+            --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            --shadow-lg: 0 10px 25px rgba(0, 0, 0, 0.15);
+            --border-radius: 8px;
+            --transition: all 0.3s ease;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.6;
+            color: var(--text-dark);
+            overflow-x: hidden;
+        }
+
+        /* Navigation */
+        .navbar {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            transition: var(--transition);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            text-decoration: none;
+        }
+
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-link {
+            text-decoration: none;
+            color: var(--text-dark);
+            font-weight: 500;
+            transition: var(--transition);
+            position: relative;
+        }
+
+        .nav-link:hover {
+            color: var(--accent-color);
+        }
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--accent-color);
+            transition: var(--transition);
+        }
+
+        .nav-link:hover::after {
+            width: 100%;
+        }
+
+        .mobile-menu-toggle {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000"><defs><pattern id="grid" width="50" height="50" patternUnits="userSpaceOnUse"><path d="M 50 0 L 0 0 0 50" fill="none" stroke="rgba(255,255,255,0.1)" stroke-width="1"/></pattern></defs><rect width="100%" height="100%" fill="url(%23grid)"/></svg>');
+            opacity: 0.3;
+        }
+
+        .hero-content {
+            max-width: 800px;
+            z-index: 2;
+            animation: fadeInUp 1s ease-out;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            line-height: 1.2;
+        }
+
+        .hero-subtitle {
+            font-size: 1.25rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: var(--accent-color);
+            color: white;
+            padding: 1rem 2rem;
+            text-decoration: none;
+            border-radius: var(--border-radius);
+            font-weight: 600;
+            transition: var(--transition);
+            box-shadow: var(--shadow);
+        }
+
+        .cta-button:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-lg);
+            background: #17d60e;
+        }
+
+        /* Services Section */
+        .services {
+            padding: 5rem 2rem;
+            background: var(--bg-light);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            margin-bottom: 3rem;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .service-card {
+            background: var(--bg-white);
+            padding: 2rem;
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            text-align: center;
+        }
+
+        .service-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .service-icon {
+            font-size: 3rem;
+            color: var(--accent-color);
+            margin-bottom: 1rem;
+        }
+
+        .service-card h3 {
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            color: var(--primary-color);
+        }
+
+        /* About Section */
+        .about {
+            padding: 5rem 2rem;
+            background: var(--bg-white);
+        }
+
+        .about-content {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .about-intro {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .about-intro h3 {
+            font-size: 2rem;
+            color: var(--primary-color);
+            margin-bottom: 1.5rem;
+            font-weight: 600;
+        }
+
+        .about-intro p {
+            font-size: 1.125rem;
+            line-height: 1.8;
+            color: var(--text-light);
+            max-width: 800px;
+            margin: 0 auto 2rem;
+        }
+
+        .definition-box {
+            background: var(--bg-light);
+            padding: 2rem;
+            border-radius: var(--border-radius);
+            border-left: 4px solid var(--accent-color);
+            margin-top: 2rem;
+        }
+
+        .definition-box h4 {
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+            font-size: 1.25rem;
+        }
+
+        .definition-box p {
+            color: var(--text-light);
+            line-height: 1.7;
+            margin: 0;
+        }
+
+        .core-services-section {
+            background: var(--bg-light);
+            padding: 2rem;
+            border-radius: var(--border-radius);
+            margin-top: 2rem;
+        }
+
+        .core-services-section h5 {
+            color: var(--primary-color);
+            font-size: 1.25rem;
+            margin-bottom: 1.5rem;
+            text-align: center;
+        }
+
+        .services-list {
+            display: grid;
+            gap: 1rem;
+        }
+
+        .service-item {
+            background: white;
+            padding: 1.5rem;
+            border-radius: var(--border-radius);
+            border-left: 3px solid var(--accent-color);
+            transition: var(--transition);
+        }
+
+        .service-item:hover {
+            transform: translateX(5px);
+            box-shadow: var(--shadow);
+        }
+
+        .service-item strong {
+            color: var(--primary-color);
+            display: block;
+            margin-bottom: 0.5rem;
+        }
+
+        .about-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-bottom: 4rem;
+        }
+
+        .about-section {
+            text-align: center;
+            padding: 2rem;
+            background: var(--bg-light);
+            border-radius: var(--border-radius);
+            transition: var(--transition);
+        }
+
+        .about-section:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .about-icon {
+            width: 80px;
+            height: 80px;
+            background: var(--accent-color);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1.5rem;
+            transition: var(--transition);
+        }
+
+        .about-icon i {
+            font-size: 2rem;
+            color: white;
+        }
+
+        .about-section:hover .about-icon {
+            transform: scale(1.1);
+            box-shadow: 0 10px 25px rgba(30, 239, 16, 0.3);
+        }
+
+        .about-section h4 {
+            font-size: 1.5rem;
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+            font-weight: 600;
+        }
+
+        .about-section p {
+            color: var(--text-light);
+            line-height: 1.6;
+        }
+
+        .about-story {
+            background: var(--bg-light);
+            padding: 3rem;
+            border-radius: var(--border-radius);
+            margin-bottom: 4rem;
+        }
+
+        .about-story h4 {
+            font-size: 1.75rem;
+            color: var(--primary-color);
+            margin-bottom: 1.5rem;
+            text-align: center;
+        }
+
+        .about-story p {
+            color: var(--text-light);
+            line-height: 1.8;
+            margin-bottom: 1.5rem;
+            font-size: 1.1rem;
+        }
+
+        .why-choose {
+            margin-bottom: 4rem;
+        }
+
+        .why-choose h4 {
+            font-size: 1.75rem;
+            color: var(--primary-color);
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+
+        .benefits-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .benefit-item {
+            text-align: center;
+            padding: 1.5rem;
+        }
+
+        .benefit-item i {
+            font-size: 2.5rem;
+            color: var(--accent-color);
+            margin-bottom: 1rem;
+        }
+
+        .benefit-item h5 {
+            font-size: 1.25rem;
+            color: var(--primary-color);
+            margin-bottom: 0.75rem;
+            font-weight: 600;
+        }
+
+        .benefit-item p {
+            color: var(--text-light);
+            line-height: 1.6;
+        }
+
+        .call-to-action-section {
+            text-align: center;
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            padding: 3rem;
+            border-radius: var(--border-radius);
+        }
+
+        .call-to-action-section h4 {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            color: white;
+        }
+
+        .call-to-action-section p {
+            font-size: 1.125rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .cta-button.secondary {
+            background: transparent;
+            border: 2px solid var(--accent-color);
+            color: var(--accent-color);
+        }
+
+        .cta-button.secondary:hover {
+            background: var(--accent-color);
+            color: white;
+        }
+
+        /* Stats Section */
+        .stats {
+            padding: 5rem 2rem;
+            background: var(--primary-color);
+            color: white;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            text-align: center;
+        }
+
+        .stat-item h3 {
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            color: var(--accent-color);
+        }
+
+        /* Contact Section */
+        .contact {
+            padding: 5rem 2rem;
+            background: var(--bg-white);
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: start;
+        }
+
+        .contact-form {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .form-group label {
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+            color: var(--text-dark);
+        }
+
+        .form-group input,
+        .form-group textarea {
+            padding: 1rem;
+            border: 2px solid #e2e8f0;
+            border-radius: var(--border-radius);
+            font-family: inherit;
+            transition: var(--transition);
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--accent-color);
+        }
+
+        .submit-btn {
+            background: var(--success-color);
+            color: white;
+            padding: 1rem 2rem;
+            border: none;
+            border-radius: var(--border-radius);
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .submit-btn:hover {
+            background: #17d60e;
+            transform: translateY(-2px);
+        }
+
+        .contact-info h3 {
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        .contact-item i {
+            color: var(--accent-color);
+            width: 20px;
+        }
+
+        /* Footer */
+        .footer {
+            background: var(--primary-color);
+            color: white;
+            padding: 3rem 2rem 1rem;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .footer-section h3 {
+            margin-bottom: 1rem;
+        }
+
+        .footer-section a {
+            color: rgba(255, 255, 255, 0.8);
+            text-decoration: none;
+            display: block;
+            margin-bottom: 0.5rem;
+            transition: var(--transition);
+        }
+
+        .footer-section a:hover {
+            color: var(--accent-color);
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .social-links a {
+            display: inline-block;
+            width: 40px;
+            height: 40px;
+            background: var(--accent-color);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: var(--transition);
+        }
+
+        .social-links a:hover {
+            transform: translateY(-2px);
+            background: #17d60e;
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.2);
+            color: rgba(255, 255, 255, 0.8);
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.6s ease;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .mobile-menu-toggle {
+                display: block;
+            }
+
+            .nav-menu {
+                display: none;
+                position: fixed;
+                top: 70px;
+                left: 0;
+                width: 100%;
+                background: white;
+                flex-direction: column;
+                padding: 1rem;
+                box-shadow: var(--shadow);
+                z-index: 1000;
+            }
+
+            .nav-menu.active {
+                display: flex;
+            }
+
+            .nav-menu li {
+                margin: 1rem 0;
+            }
+
+            .hero h1 {
+                font-size: 2.5rem;
+                padding: 0 1rem;
+            }
+
+            .hero-subtitle {
+                padding: 0 1rem;
+            }
+
+            .contact-grid {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+
+            .services-grid {
+                grid-template-columns: 1fr;
+                padding: 0 1rem;
+            }
+
+            .about-grid {
+                grid-template-columns: 1fr;
+                padding: 0 1rem;
+            }
+
+            .benefits-grid {
+                grid-template-columns: 1fr;
+                padding: 0 1rem;
+            }
+
+            .stats-grid {
+                grid-template-columns: 1fr;
+                padding: 0 1rem;
+            }
+
+            .footer-content {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+
+            .social-links {
+                justify-content: center;
+            }
+
+            .about-content {
+                padding: 0 1rem;
+            }
+
+            .about-story {
+                padding: 2rem 1rem;
+            }
+
+            .core-services-section {
+                padding: 1rem;
+            }
+
+            .call-to-action-section {
+                padding: 2rem 1rem;
+            }
+
+            .contact {
+                padding: 3rem 1rem;
+            }
+
+            .contact-info {
+                text-align: center;
+            }
+
+            .contact-item {
+                justify-content: center;
+            }
+        }
+
+        /* Additional mobile fixes */
+        @media (max-width: 480px) {
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .hero-subtitle {
+                font-size: 1rem;
+            }
+
+            .cta-button {
+                padding: 0.8rem 1.5rem;
+            }
+
+            .section-title {
+                font-size: 1.75rem;
+            }
+
+            .about-section {
+                padding: 1.5rem;
+            }
+
+            .service-card {
+                padding: 1.5rem;
+            }
+
+            .stat-item h3 {
+                font-size: 2.5rem;
+            }
+        }
+
+        /* Scroll indicator */
+        .scroll-indicator {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: rgba(255, 114, 0, 0.2);
+            z-index: 9999;
+        }
+
+        .scroll-progress {
+            height: 100%;
+            background: var(--accent-color);
+            width: 0%;
+            transition: width 0.1s ease;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Scroll Progress Indicator -->
+    <div class="scroll-indicator">
+        <div class="scroll-progress" id="scrollProgress"></div>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <a href="#" class="logo">SUMIC Capital</a>
+            <ul class="nav-menu" id="navMenu">
+                <li><a href="#home" class="nav-link">Home</a></li>
+                <li><a href="#services" class="nav-link">Services</a></li>
+                <li><a href="#about" class="nav-link">About</a></li>
+                <li><a href="#contact" class="nav-link">Contact</a></li>
+            </ul>
+            <button class="mobile-menu-toggle" id="mobileToggle">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="hero-content">
+            <h1>Digital Investment Banking <span style="color: var(--accent-color);">Platform</span></h1>
+            <p class="hero-subtitle">Connecting African businesses with global investors through our innovative digital platform. We bring world-class investment banking services to African companies, enabling them to access international capital markets and attract investors from around the globe.</p>
+            <a href="#contact" class="cta-button">Get Started Today</a>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section class="services" id="services">
+        <div class="container">
+            <h2 class="section-title fade-in">Our Services</h2>
+            <div class="services-grid">
+                <div class="service-card fade-in">
+                    <div class="service-icon">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <h3>IPO & Capital Raising</h3>
+                    <p>Guide African companies through Initial Public Offerings and capital raising processes, connecting them with global institutional investors and facilitating access to international markets.</p>
+                </div>
+                <div class="service-card fade-in">
+                    <div class="service-icon">
+                        <i class="fas fa-handshake"></i>
+                    </div>
+                    <h3>M&A Advisory Services</h3>
+                    <p>Expert advisory on mergers, acquisitions, and strategic partnerships. From valuation and due diligence to deal structuring and regulatory compliance for cross-border transactions.</p>
+                </div>
+                <div class="service-card fade-in">
+                    <div class="service-icon">
+                        <i class="fas fa-globe"></i>
+                    </div>
+                    <h3>Global Investor Network</h3>
+                    <p>Access our worldwide network of institutional investors, private equity firms, and high-net-worth individuals seeking African investment opportunities with growth potential.</p>
+                </div>
+                <div class="service-card fade-in">
+                    <div class="service-icon">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <h3>Underwriting & Advisory</h3>
+                    <p>Comprehensive underwriting services for debt and equity issuances, plus strategic financial advisory on corporate finance, restructuring, and risk management.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="about" id="about">
+        <div class="container">
+            <h2 class="section-title fade-in">About SUMIC Capital</h2>
+            
+            <div class="about-content">
+                <div class="about-intro fade-in">
+                    <h3>Bridging African Business with Global Capital</h3>
+                    <p>SUMIC Capital is a pioneering digital investment banking platform developed by SUMIC IT Solutions, designed to connect promising African businesses with investors worldwide. We specialize in providing sophisticated financial advisory services and capital-raising solutions to African corporations, governments, and institutions seeking access to global markets.</p>
+                    
+                    <div class="definition-box">
+                        <h4>What is Investment Banking?</h4>
+                        <p>Investment banking is a specialized segment of the financial services industry that primarily focuses on providing financial advisory services and capital-raising solutions to corporations, governments, and other large institutions. Unlike commercial banks, investment banks operate in the realm of "higher finance" and complex financial transactions, facilitating capital flow between those who need funding and those with capital to deploy.</p>
+                    </div>
+                </div>
+
+                <div class="about-grid">
+                    <div class="about-section fade-in">
+                        <div class="about-icon">
+                            <i class="fas fa-lightbulb"></i>
+                        </div>
+                        <h4>Our Vision</h4>
+                        <p>To become the premier digital investment banking platform connecting African businesses with global capital markets, where every promising African company can access international investors and funding opportunities.</p>
+                    </div>
+
+                    <div class="about-section fade-in">
+                        <div class="about-icon">
+                            <i class="fas fa-rocket"></i>
+                        </div>
+                        <h4>Our Mission</h4>
+                        <p>Breaking down geographical barriers by providing African businesses with access to global investment banking services, sophisticated financial advisory, and international capital markets through innovative technology.</p>
+                    </div>
+
+                    <div class="about-section fade-in">
+                        <div class="about-icon">
+                            <i class="fas fa-cogs"></i>
+                        </div>
+                        <h4>How It Works</h4>
+                        <p>African companies access our platform for IPOs, M&A advisory, and capital raising. We connect them with global institutional investors, private equity firms, and international funding sources seeking African growth opportunities.</p>
+                    </div>
+                </div>
+
+                <div class="about-story fade-in">
+                    <h4>The SUMIC Capital Story</h4>
+                    <p>Born from the innovative minds at SUMIC IT Solutions, SUMIC Capital represents our commitment to leveraging technology to connect African businesses with global capital markets. We recognized that many promising African companies lack access to international investment banking services and sophisticated capital-raising solutions.</p>
+                    
+                    <p>Our platform brings the expertise of traditional investment banking - including M&A advisory, underwriting, and strategic financial guidance - to African businesses through cutting-edge technology. We facilitate complex financial transactions, guide companies through IPOs, and connect them with institutional investors worldwide who are seeking African growth opportunities.</p>
+
+                    <div class="core-services-section">
+                        <h5>Our Core Investment Banking Functions:</h5>
+                        <div class="services-list">
+                            <div class="service-item">
+                                <strong>M&A Advisory:</strong> Comprehensive advisory on mergers, acquisitions, valuation, due diligence, deal structuring, and cross-border transaction management.
+                            </div>
+                            <div class="service-item">
+                                <strong>Capital Raising & Underwriting:</strong> IPO guidance, debt issuances, secondary offerings, and connecting African companies with global institutional investors.
+                            </div>
+                            <div class="service-item">
+                                <strong>Strategic Advisory:</strong> Corporate finance strategy, restructuring, risk management, and regulatory compliance for international markets.
+                            </div>
+                            <div class="service-item">
+                                <strong>Global Market Access:</strong> Facilitating connections between African businesses and worldwide investors, private equity firms, and funding sources.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="why-choose fade-in">
+                    <h4>Why Choose SUMIC Capital?</h4>
+                    <div class="benefits-grid">
+                        <div class="benefit-item">
+                            <i class="fas fa-globe"></i>
+                            <h5>Global Investor Access</h5>
+                            <p>Connect African businesses with institutional investors, private equity firms, and funding sources worldwide.</p>
+                        </div>
+                        <div class="benefit-item">
+                            <i class="fas fa-building"></i>
+                            <h5>African Market Expertise</h5>
+                            <p>Deep understanding of African business environments combined with international investment banking standards.</p>
+                        </div>
+                        <div class="benefit-item">
+                            <i class="fas fa-chart-bar"></i>
+                            <h5>Sophisticated Advisory</h5>
+                            <p>Professional M&A advisory, IPO guidance, and strategic financial consulting typically available only to large corporations.</p>
+                        </div>
+                        <div class="benefit-item">
+                            <i class="fas fa-shield-alt"></i>
+                            <h5>Regulatory Compliance</h5>
+                            <p>Full compliance with international financial regulations and cross-border transaction requirements.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="call-to-action-section fade-in">
+                    <h4>Ready to Access Global Capital Markets?</h4>
+                    <p>Whether you're an African company seeking international investment or a global investor looking for African opportunities, SUMIC Capital is your gateway to sophisticated investment banking services and worldwide capital access.</p>
+                    <div class="cta-buttons">
+                        <a href="#contact" class="cta-button">Raise Capital Globally</a>
+                        <a href="#contact" class="cta-button secondary">Explore African Investments</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats Section -->
+    <section class="stats">
+        <div class="container">
+            <div class="stats-grid">
+                <div class="stat-item fade-in">
+                    <h3 id="stat1">0</h3>
+                    <p>African Companies Served</p>
+                </div>
+                <div class="stat-item fade-in">
+                    <h3 id="stat2">$0</h3>
+                    <p>Global Capital Raised</p>
+                </div>
+                <div class="stat-item fade-in">
+                    <h3 id="stat3">0</h3>
+                    <p>International Investors</p>
+                </div>
+                <div class="stat-item fade-in">
+                    <h3 id="stat4">0</h3>
+                    <p>Countries Reached</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact" id="contact">
+        <div class="container">
+            <h2 class="section-title fade-in">Get In Touch</h2>
+            <div class="contact-grid">
+                <div class="contact-info fade-in">
+                    <h3>Contact Information</h3>
+                    <div class="contact-item">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <span>New Port Bell Road, P.O.BOX 172928, Kampala GPO, Uganda</span>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-phone"></i>
+                        <span>+256 741 117 215</span>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-phone"></i>
+                        <span>+256 764 089 266</span>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-envelope"></i>
+                        <span>info@sumicitsolutions.com</span>
+                    </div>
+                    <div class="social-links" style="margin-top: 2rem;">
+                        <a href="https://wa.me/256764426529" target="_blank" title="WhatsApp">
+                            <i class="fab fa-whatsapp"></i>
+                        </a>
+                        <a href="https://facebook.com/sumic capital" target="_blank" title="Facebook">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                        <a href="https://twitter.com/sumic capital" target="_blank" title="Twitter">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                        <a href="https://linkedin.com/in/sumiccapital" target="_blank" title="LinkedIn">
+                            <i class="fab fa-linkedin-in"></i>
+                        </a>
+                        <a href="https://instagram.com/sumic capital" target="_blank" title="Instagram">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                    </div>
+                </div>
+                <form class="contact-form fade-in" id="contactForm">
+                    <div class="form-group">
+                        <label for="name">Full Name</label>
+                        <input type="text" id="name" name="name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email Address</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="subject">Subject</label>
+                        <input type="text" id="subject" name="subject" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="message">Message</label>
+                        <textarea id="message" name="message" rows="5" required></textarea>
+                    </div>
+                    <button type="submit" class="submit-btn">Send Message</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>SUMIC Capital</h3>
+                <p>Connecting African businesses with global capital markets through sophisticated investment banking services and innovative technology.</p>
+            </div>
+            <div class="footer-section">
+                <h3>Services</h3>
+                <a href="#">IPO & Capital Raising</a>
+                <a href="#">M&A Advisory</a>
+                <a href="#">Global Investor Network</a>
+                <a href="#">Underwriting Services</a>
+            </div>
+            <div class="footer-section">
+                <h3>For Businesses</h3>
+                <a href="#about">Investment Banking</a>
+                <a href="#">Raise Capital Globally</a>
+                <a href="#">Strategic Advisory</a>
+                <a href="#">Market Access</a>
+            </div>
+            <div class="footer-section">
+                <h3>For Investors</h3>
+                <a href="#">African Opportunities</a>
+                <a href="#">Due Diligence Reports</a>
+                <a href="#">Portfolio Management</a>
+                <a href="#">Market Intelligence</a>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 SUMIC Capital. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu toggle
+        const mobileToggle = document.getElementById('mobileToggle');
+        const navMenu = document.getElementById('navMenu');
+
+        mobileToggle.addEventListener('click', function() {
+            navMenu.classList.toggle('active');
+        });
+
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                    navMenu.classList.remove('active');
+                }
+            });
+        });
+
+        // Scroll progress indicator
+        window.addEventListener('scroll', function() {
+            const scrollProgress = document.getElementById('scrollProgress');
+            const scrollTop = window.pageYOffset;
+            const docHeight = document.body.scrollHeight - window.innerHeight;
+            const scrollPercent = (scrollTop / docHeight) * 100;
+            scrollProgress.style.width = scrollPercent + '%';
+        });
+
+        // Navbar background on scroll
+        window.addEventListener('scroll', function() {
+            const navbar = document.getElementById('navbar');
+            if (window.scrollY > 50) {
+                navbar.style.background = 'rgba(255, 255, 255, 0.98)';
+            } else {
+                navbar.style.background = 'rgba(255, 255, 255, 0.95)';
+            }
+        });
+
+        // Fade in animation on scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver(function(entries) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.fade-in').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Animated counters for stats
+        function animateValue(element, start, end, duration, prefix = '', suffix = '') {
+            let startTimestamp = null;
+            const step = (timestamp) => {
+                if (!startTimestamp) startTimestamp = timestamp;
+                const progress = Math.min((timestamp - startTimestamp) / duration, 1);
+                const current = Math.floor(progress * (end - start) + start);
+                element.innerHTML = prefix + current.toLocaleString() + suffix;
+                if (progress < 1) {
+                    window.requestAnimationFrame(step);
+                }
+            };
+            window.requestAnimationFrame(step);
+        }
+
+        // Trigger stats animation when section is visible
+        const statsSection = document.querySelector('.stats');
+        const statsObserver = new IntersectionObserver(function(entries) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    animateValue(document.getElementById('stat1'), 0, 150, 2000, '', '+');
+                    animateValue(document.getElementById('stat2'), 0, 25, 2000, '$', 'M+');
+                    animateValue(document.getElementById('stat3'), 0, 500, 2000, '', '+');
+                    animateValue(document.getElementById('stat4'), 0, 12, 2000, '', '');
+                    statsObserver.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.3 });
+
+        statsObserver.observe(statsSection);
+
+        // Contact form handling
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Get form data
+            const formData = new FormData(this);
+            const data = Object.fromEntries(formData);
+            
+            // Show success message (replace with actual form submission logic)
+            alert('Thank you for your message! We will get back to you soon.');
+            this.reset();
+        });
+
+        // Parallax effect for hero section
+        window.addEventListener('scroll', function() {
+            const scrolled = window.pageYOffset;
+            const hero = document.querySelector('.hero');
+            const rate = scrolled * -0.5;
+            hero.style.transform = `translateY(${rate}px)`;
+        });
+
+        // Typewriter effect for hero title (optional enhancement)
+        function typeWriter(element, text, speed = 100) {
+            let i = 0;
+            element.innerHTML = '';
+            function type() {
+                if (i < text.length) {
+                    element.innerHTML += text.charAt(i);
+                    i++;
+                    setTimeout(type, speed);
+                }
+            }
+            type();
+        }
+
+        // Add hover effects to service cards
+        document.querySelectorAll('.service-card').forEach(card => {
+            card.addEventListener('mouseenter', function() {
+                this.style.transform = 'translateY(-10px) scale(1.02)';
+            });
+            
+            card.addEventListener('mouseleave', function() {
+                this.style.transform = 'translateY(0) scale(1)';
+            });
+        });
+
+        // Add click ripple effect to buttons
+        function createRipple(event) {
+            const button = event.currentTarget;
+            const circle = document.createElement('span');
+            const diameter = Math.max(button.clientWidth, button.clientHeight);
+            const radius = diameter / 2;
+
+            circle.style.width = circle.style.height = `${diameter}px`;
+            circle.style.left = `${event.clientX - button.offsetLeft - radius}px`;
+            circle.style.top = `${event.clientY - button.offsetTop - radius}px`;
+            circle.classList.add('ripple');
+
+            const ripple = button.getElementsByClassName('ripple')[0];
+            if (ripple) {
+                ripple.remove();
+            }
+
+            button.appendChild(circle);
+        }
+
+        // Add ripple effect styles
+        const rippleStyle = document.createElement('style');
+        rippleStyle.textContent = `
+            .ripple {
+                position: absolute;
+                border-radius: 50%;
+                transform: scale(0);
+                animation: ripple 600ms linear;
+                background-color: rgba(255, 255, 255, 0.6);
+                pointer-events: none;
+            }
+            
+            @keyframes ripple {
+                to {
+                    transform: scale(4);
+                    opacity: 0;
+                }
+            }
+        `;
+        document.head.appendChild(rippleStyle);
+
+        // Apply ripple effect to buttons
+        document.querySelectorAll('.cta-button, .submit-btn').forEach(button => {
+            button.addEventListener('click', createRipple);
+        });
+    </script>
+</body>
+</html>
