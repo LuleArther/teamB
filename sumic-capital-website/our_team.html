@@ -1,0 +1,916 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Team - Sumic Capital</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        :root {
+            --primary-color: #023151;
+            --secondary-color: #034a73;
+            --accent-color: #1EEF10;
+            --success-color: #1EEF10;
+            --text-dark: #023151;
+            --text-light: #5a6d7a;
+            --bg-light: #f7fafc;
+            --bg-white: #ffffff;
+            --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            --shadow-lg: 0 10px 25px rgba(0, 0, 0, 0.15);
+            --border-radius: 8px;
+            --transition: all 0.3s ease;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.6;
+            color: var(--text-dark);
+            overflow-x: hidden;
+        }
+
+        /* Navigation */
+        .navbar {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            transition: var(--transition);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            text-decoration: none;
+        }
+
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-link {
+            text-decoration: none;
+            color: var(--text-dark);
+            font-weight: 500;
+            transition: var(--transition);
+            position: relative;
+        }
+
+        .nav-link:hover, .nav-link.active {
+            color: var(--accent-color);
+        }
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--accent-color);
+            transition: var(--transition);
+        }
+
+        .nav-link:hover::after, .nav-link.active::after {
+            width: 100%;
+        }
+
+        .mobile-menu-toggle {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        /* Hero Section */
+        .hero {
+            height: 60vh;
+            background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: white;
+            position: relative;
+            overflow: hidden;
+            margin-top: 70px;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000"><defs><pattern id="grid" width="50" height="50" patternUnits="userSpaceOnUse"><path d="M 50 0 L 0 0 0 50" fill="none" stroke="rgba(255,255,255,0.1)" stroke-width="1"/></pattern></defs><rect width="100%" height="100%" fill="url(%23grid)"/></svg>');
+            opacity: 0.3;
+        }
+
+        .hero-content {
+            max-width: 800px;
+            z-index: 2;
+            animation: fadeInUp 1s ease-out;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            line-height: 1.2;
+        }
+
+        .hero-subtitle {
+            font-size: 1.25rem;
+            opacity: 0.9;
+        }
+
+        /* Team Section */
+        .team-section {
+            padding: 5rem 2rem;
+            background: var(--bg-white);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+        }
+
+        .section-subtitle {
+            text-align: center;
+            font-size: 1.125rem;
+            color: var(--text-light);
+            margin-bottom: 4rem;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* Leadership Section */
+        .leadership-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 3rem;
+            margin-bottom: 5rem;
+        }
+
+        .leader-card {
+            background: var(--bg-white);
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow-lg);
+            overflow: hidden;
+            transition: var(--transition);
+            position: relative;
+        }
+
+        .leader-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+        }
+
+        .leader-image {
+            width: 100%;
+            height: 300px;
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .leader-image::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="50" cy="35" r="20" fill="rgba(255,255,255,0.2)"/><path d="M20 80 Q50 60 80 80 L80 100 L20 100 Z" fill="rgba(255,255,255,0.2)"/></svg>');
+            opacity: 0.7;
+        }
+
+        .leader-icon {
+            font-size: 4rem;
+            color: white;
+            z-index: 2;
+        }
+
+        .leader-info {
+            padding: 2rem;
+        }
+
+        .leader-name {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            margin-bottom: 0.5rem;
+        }
+
+        .leader-title {
+            font-size: 1rem;
+            color: var(--accent-color);
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+
+        .leader-bio {
+            color: var(--text-light);
+            line-height: 1.7;
+            margin-bottom: 1.5rem;
+        }
+
+        .leader-social {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .social-link {
+            width: 40px;
+            height: 40px;
+            background: var(--bg-light);
+            color: var(--primary-color);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .social-link:hover {
+            background: var(--accent-color);
+            color: white;
+            transform: translateY(-2px);
+        }
+
+        /* Team Grid */
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-bottom: 4rem;
+        }
+
+        .team-card {
+            background: var(--bg-white);
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow);
+            overflow: hidden;
+            transition: var(--transition);
+            text-align: center;
+        }
+
+        .team-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .team-image {
+            width: 100%;
+            height: 200px;
+            background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+
+        .team-image::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="50" cy="40" r="15" fill="rgba(255,255,255,0.3)"/><path d="M30 75 Q50 60 70 75 L70 90 L30 90 Z" fill="rgba(255,255,255,0.3)"/></svg>');
+            opacity: 0.8;
+        }
+
+        .team-icon {
+            font-size: 3rem;
+            color: white;
+            z-index: 2;
+        }
+
+        .team-info {
+            padding: 1.5rem;
+        }
+
+        .team-name {
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: var(--primary-color);
+            margin-bottom: 0.5rem;
+        }
+
+        .team-role {
+            color: var(--accent-color);
+            font-weight: 500;
+            margin-bottom: 1rem;
+        }
+
+        .team-description {
+            color: var(--text-light);
+            font-size: 0.9rem;
+            line-height: 1.6;
+            margin-bottom: 1rem;
+        }
+
+        .team-contact {
+            display: flex;
+            justify-content: center;
+            gap: 0.5rem;
+        }
+
+        .contact-link {
+            width: 35px;
+            height: 35px;
+            background: var(--bg-light);
+            color: var(--primary-color);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: var(--transition);
+        }
+
+        .contact-link:hover {
+            background: var(--accent-color);
+            color: white;
+        }
+
+        /* Departments Section */
+        .departments {
+            background: var(--bg-light);
+            padding: 5rem 2rem;
+        }
+
+        .dept-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .dept-card {
+            background: var(--bg-white);
+            padding: 2rem;
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow);
+            text-align: center;
+            transition: var(--transition);
+        }
+
+        .dept-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .dept-icon {
+            width: 80px;
+            height: 80px;
+            background: var(--accent-color);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1.5rem;
+            transition: var(--transition);
+        }
+
+        .dept-icon i {
+            font-size: 2rem;
+            color: white;
+        }
+
+        .dept-card:hover .dept-icon {
+            transform: scale(1.1);
+            box-shadow: 0 10px 25px rgba(30, 239, 16, 0.3);
+        }
+
+        .dept-name {
+            font-size: 1.5rem;
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+            font-weight: 600;
+        }
+
+        .dept-description {
+            color: var(--text-light);
+            line-height: 1.6;
+        }
+
+        /* CTA Section */
+        .cta-section {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            padding: 4rem 2rem;
+            text-align: center;
+        }
+
+        .cta-content h3 {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .cta-content p {
+            font-size: 1.125rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: var(--accent-color);
+            color: white;
+            padding: 1rem 2rem;
+            text-decoration: none;
+            border-radius: var(--border-radius);
+            font-weight: 600;
+            transition: var(--transition);
+            box-shadow: var(--shadow);
+        }
+
+        .cta-button:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-lg);
+            background: #17d60e;
+        }
+
+        /* Footer */
+        .footer {
+            background: var(--primary-color);
+            color: white;
+            padding: 3rem 2rem 1rem;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .footer-section h3 {
+            margin-bottom: 1rem;
+        }
+
+        .footer-section a {
+            color: rgba(255, 255, 255, 0.8);
+            text-decoration: none;
+            display: block;
+            margin-bottom: 0.5rem;
+            transition: var(--transition);
+        }
+
+        .footer-section a:hover {
+            color: var(--accent-color);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.2);
+            color: rgba(255, 255, 255, 0.8);
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.6s ease;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Scroll indicator */
+        .scroll-indicator {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: rgba(255, 114, 0, 0.2);
+            z-index: 9999;
+        }
+
+        .scroll-progress {
+            height: 100%;
+            background: var(--accent-color);
+            width: 0%;
+            transition: width 0.1s ease;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .mobile-menu-toggle {
+                display: block;
+            }
+
+            .nav-menu {
+                display: none;
+                position: fixed;
+                top: 70px;
+                left: 0;
+                width: 100%;
+                background: white;
+                flex-direction: column;
+                padding: 1rem;
+                box-shadow: var(--shadow);
+                z-index: 1000;
+            }
+
+            .nav-menu.active {
+                display: flex;
+            }
+
+            .nav-menu li {
+                margin: 1rem 0;
+            }
+
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+
+            .leadership-grid {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .team-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .dept-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .leader-card, .team-card, .dept-card {
+                margin: 0 1rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero h1 {
+                font-size: 1.75rem;
+            }
+
+            .section-title {
+                font-size: 1.75rem;
+            }
+
+            .leader-info, .team-info {
+                padding: 1rem;
+            }
+
+            .cta-content h3 {
+                font-size: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Scroll Progress Indicator -->
+    <div class="scroll-indicator">
+        <div class="scroll-progress" id="scrollProgress"></div>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="logo">SUMIC Capital</a>
+            <ul class="nav-menu" id="navMenu">
+                <li><a href="index.html" class="nav-link">Home</a></li>
+                <li><a href="index.html#services" class="nav-link">Services</a></li>
+                <li><a href="index.html#about" class="nav-link">About</a></li>
+                <li><a href="our-team.html" class="nav-link active">Our Team</a></li>
+                <li><a href="index.html#contact" class="nav-link">Contact</a></li>
+            </ul>
+            <button class="mobile-menu-toggle" id="mobileToggle">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Meet Our <span style="color: var(--accent-color);">Expert Team</span></h1>
+            <p class="hero-subtitle">Investment banking professionals dedicated to connecting African businesses with global capital markets</p>
+        </div>
+    </section>
+
+    <!-- Leadership Section -->
+    <section class="team-section">
+        <div class="container">
+            <h2 class="section-title fade-in">Leadership Team</h2>
+            <p class="section-subtitle fade-in">Our senior leadership brings decades of combined experience in investment banking, capital markets, and African business development.</p>
+            
+            <div class="leadership-grid">
+                <div class="leader-card fade-in">
+                    <div class="leader-image">
+                        <i class="leader-icon fas fa-user-tie"></i>
+                    </div>
+                    <div class="leader-info">
+                        <h3 class="leader-name">Dr. Samuel Kiprotich</h3>
+                        <p class="leader-title">Chief Executive Officer & Founder</p>
+                        <p class="leader-bio">With over 15 years in investment banking across London and Nairobi, Dr. Kiprotich founded SUMIC Capital to bridge the gap between African businesses and global investors. He holds an MBA from London Business School and a PhD in Finance from Oxford University.</p>
+                        <div class="leader-social">
+                            <a href="#" class="social-link"><i class="fab fa-linkedin-in"></i></a>
+                            <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+                            <a href="#" class="social-link"><i class="fas fa-envelope"></i></a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="leader-card fade-in">
+                    <div class="leader-image">
+                        <i class="leader-icon fas fa-user-graduate"></i>
+                    </div>
+                    <div class="leader-info">
+                        <h3 class="leader-name">Maria Okonkwo</h3>
+                        <p class="leader-title">Chief Investment Officer</p>
+                        <p class="leader-bio">Former Goldman Sachs Managing Director with 12 years of experience in African markets. Maria specializes in cross-border M&A and has facilitated over $2 billion in African deals. She holds a CFA designation and MBA from Wharton.</p>
+                        <div class="leader-social">
+                            <a href="#" class="social-link"><i class="fab fa-linkedin-in"></i></a>
+                            <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+                            <a href="#" class="social-link"><i class="fas fa-envelope"></i></a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="leader-card fade-in">
+                    <div class="leader-image">
+                        <i class="leader-icon fas fa-chart-line"></i>
+                    </div>
+                    <div class="leader-info">
+                        <h3 class="leader-name">James Mwangi</h3>
+                        <p class="leader-title">Managing Director - Capital Markets</p>
+                        <p class="leader-bio">Previously Head of Equity Capital Markets at Standard Bank Africa, James has led over 50 IPOs and capital raises across the continent. His expertise in African regulatory frameworks and investor relations is unmatched in the industry.</p>
+                        <div class="leader-social">
+                            <a href="#" class="social-link"><i class="fab fa-linkedin-in"></i></a>
+                            <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+                            <a href="#" class="social-link"><i class="fas fa-envelope"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Team Members Section -->
+    <section class="team-section" style="background: var(--bg-light);">
+        <div class="container">
+            <h2 class="section-title fade-in">Investment Banking Team</h2>
+            <p class="section-subtitle fade-in">Our experienced professionals provide comprehensive investment banking services to clients across Africa and globally.</p>
+            
+            <div class="team-grid">
+                <div class="team-card fade-in">
+                    <div class="team-image">
+                        <i class="team-icon fas fa-user-tie"></i>
+                    </div>
+                    <div class="team-info">
+                        <h4 class="team-name">Catherine Nyong</h4>
+                        <p class="team-role">Senior Vice President - M&A</p>
+                        <p class="team-description">Specialist in cross-border mergers and acquisitions with focus on technology and financial services sectors.</p>
+                        <div class="team-contact">
+                            <a href="#" class="contact-link"><i class="fab fa-linkedin-in"></i></a>
+                            <a href="#" class="contact-link"><i class="fas fa-envelope"></i></a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="team-card fade-in">
+                    <div class="team-image">
+                        <i class="team-icon fas fa-user"></i>
+                    </div>
+                    <div class="team-info">
+                        <h4 class="team-name">David Mensah</h4>
+                        <p class="team-role">Vice President - Corporate Finance</p>
+                        <p class="team-description">Expert in debt and equity capital markets with extensive experience in infrastructure financing.</p>
+                        <div class="team-contact">
+                            <a href="#" class="contact-link"><i class="fab fa-linkedin-in"></i></a>
+                            <a href="#" class="contact-link"><i class="fas fa-envelope"></i></a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="team-card fade-in">
+                    <div class="team-image">
+                        <i class="team-icon fas fa-user-graduate"></i>
+                    </div>
+                    <div class="team-info">
+                        <h4 class="team-name">Amina Hassan</h4>
+                        <p class="team-role">Director - Investor Relations</p>
+                        <p class="team-description">Manages relationships with institutional investors and coordinates global fundraising initiatives.</p>
+                        <div class="team-contact">
+                            <a href="#" class="contact-link"><i class="fab fa-linkedin-in"></i></a>
+                            <a href="#" class="contact-link"><i class="fas fa-envelope"></i></a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="team-card fade-in">
+                    <div class="team-image">
+                        <i class="team-icon fas fa-user-tie"></i>
+                    </div>
+                    <div class="team-info">
+                        <h4 class="team-name">Robert Nakamura</h4>
+                        <p class="team-role">Senior Analyst - Research</p>
+                        <p class="team-description">Provides market research and financial analysis to support investment decisions and client advisory.</p>
+                        <div class="team-contact">
+                            <a href="#" class="contact-link"><i class="fab fa-linkedin-in"></i></a>
+                            <a href="#" class="contact-link"><i class="fas fa-envelope"></i></a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="team-card fade-in">
+                    <div class="team-image">
+                        <i class="team-icon fas fa-user"></i>
+                    </div>
+                    <div class="team-info">
+                        <h4 class="team-name">Grace Mutua</h4>
+                        <p class="team-role">Associate Director - Risk Management</p>
+                        <p class="team-description">Oversees risk assessment and compliance for all investment banking transactions and client relationships.</p>
+                        <div class="team-contact">
+                            <a href="#" class="contact-link"><i class="fab fa-linkedin-in"></i></a>
+                            <a href="#" class="contact-link"><i class="fas fa-envelope"></i></a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="team-card fade-in">
+                    <div class="team-image">
+                        <i class="team-icon fas fa-user-graduate"></i>
+                    </div>
+                    <div class="team-info">
+                        <h4 class="team-name">Ahmed Al-Rashid</h4>
+                        <p class="team-role">Vice President - Structured Finance</p>
+                        <p class="team-description">Specializes in complex financial instruments and structured products for institutional clients.</p>
+                        <div class="team-contact">
+                            <a href="#" class="contact-link"><i class="fab fa-linkedin-in"></i></a>
+                            <a href="#" class="contact-link"><i class="fas fa-envelope"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Departments Section -->
+    <section class="departments">
+        <div class="container">
+            <h2 class="section-title fade-in">Our Departments</h2>
+            <p class="section-subtitle fade-in">Specialized teams working together to deliver comprehensive investment banking solutions.</p>
+            
+            <div class="dept-grid">
+                <div class="dept-card fade-in">
+                    <div class="dept-icon">
+                        <i class="fas fa-handshake"></i>
+                    </div>
+                    <h4 class="dept-name">Mergers & Acquisitions</h4>
+                    <p class="dept-description">Our M&A team provides strategic advisory services for complex transactions, including valuations, due diligence, and deal structuring for cross-border acquisitions.</p>
+                </div>
+
+                <div class="dept-card fade-in">
+                    <div class="dept-icon">
+                        <i class="fas fa-chart-bar"></i>
+                    </div>
+                    <h4 class="dept-name">Capital Markets</h4>
+                    <p class="dept-description">Specializing in IPOs, secondary offerings, and debt issuances, our team connects African companies with global capital markets and institutional investors.</p>
+                </div>
+
+                <div class="dept-card fade-in">
+                    <div class="dept-icon">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <h4 class="dept-name">Risk & Compliance</h4>
+                    <p class="dept-description">Ensuring regulatory compliance and robust risk management for all transactions, safeguarding clients and stakeholders at every stage.</p>
+                </div>
+
+                <div class="dept-card fade-in">
+                    <div class="dept-icon">
+                        <i class="fas fa-lightbulb"></i>
+                    </div>
+                    <h4 class="dept-name">Research & Strategy</h4>
+                    <p class="dept-description">Our research team delivers market intelligence and strategic insights to inform investment decisions and drive business growth.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section">
+        <div class="cta-content">
+            <h3>Ready to Partner with SUMIC Capital?</h3>
+            <p>Contact us today to discuss your investment banking needs or join our team of experts driving Africa's financial future.</p>
+            <a href="index.html#contact" class="cta-button">Contact Us</a>
+            <a href="register.html" class="cta-button" style="margin-left: 1rem; background: var(--primary-color);">Join Our Team</a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>SUMIC Capital</h3>
+                <p>Connecting African businesses with global capital markets.</p>
+            </div>
+            <div class="footer-section">
+                <h3>Quick Links</h3>
+                <a href="index.html">Home</a><br>
+                <a href="index.html#services">Services</a><br>
+                <a href="index.html#about">About</a><br>
+                <a href="our_team.html">Our Team</a><br>
+                <a href="index.html#contact">Contact</a>
+            </div>
+            <div class="footer-section">
+                <h3>Follow Us</h3>
+                <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                <a href="#"><i class="fab fa-twitter"></i></a>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            &copy; 2025 SUMIC Capital. All rights reserved.
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu toggle
+        const mobileToggle = document.getElementById('mobileToggle');
+        const navMenu = document.getElementById('navMenu');
+        if (mobileToggle && navMenu) {
+            mobileToggle.addEventListener('click', function() {
+                navMenu.classList.toggle('active');
+            });
+        }
+
+        // Scroll progress indicator
+        const scrollProgress = document.getElementById('scrollProgress');
+        window.addEventListener('scroll', function() {
+            const scrollTop = window.scrollY;
+            const docHeight = document.body.scrollHeight - window.innerHeight;
+            const scrollPercent = (scrollTop / docHeight) * 100;
+            scrollProgress.style.width = scrollPercent + '%';
+        });
+    </script>
+</body>
+</html>
